@@ -9,8 +9,12 @@ import java.io.IOException;
 
 @WebServlet(urlPatterns = "/donate", loadOnStartup = 1)
 public class Servlet extends HttpServlet {
+    public Servlet(){
+        System.out.println("running Donation const");
+    }
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        System.out.println("running Donation");
 
             String firstName = req.getParameter("inputFN");
             String lastName = req.getParameter("inputLN");
@@ -27,12 +31,12 @@ public class Servlet extends HttpServlet {
                 }
             }
 
-    RequestDispatcher requestDispatcher = req.getRequestDispatcher("Success.jsp");
-            req.setAttribute("First Name", firstName);
-            req.setAttribute("Last Name", lastName);
-            req.setAttribute("Email", email);
-            req.setAttribute("Amount", amount);
-            req.setAttribute("Cause", cause);
+    RequestDispatcher requestDispatcher = req.getRequestDispatcher("DSuccess.jsp");
+            req.setAttribute("firstName", firstName);
+            req.setAttribute("lastName", lastName);
+            req.setAttribute("email", email);
+            req.setAttribute("amount", amount);
+            req.setAttribute("cause", cause);
         requestDispatcher.forward(req,resp);
     }
 }

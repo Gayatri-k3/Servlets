@@ -66,7 +66,7 @@
 
 <div class="form-container">
     <h2 class="text-center mb-4">Please Enter the Details to register for License</h2>
-    <form action="LDSubmit" method="post" class="row g-3">
+    <form action="LicenseSubmit" method="post" class="row g-3">
         <div class="col-md-6">
             <label class="form-label">First Name</label>
             <input type="text" class="form-control" name="fn" placeholder="First name" required>

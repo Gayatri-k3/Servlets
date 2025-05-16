@@ -9,21 +9,26 @@ import java.io.IOException;
 
 @WebServlet(urlPatterns = "/LicenseSubmit", loadOnStartup = 1)
 public class LDServlet extends HttpServlet {
+    public LDServlet(){
+        System.out.println("running license const");
+    }
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        System.out.println("running LD");
 
-        String firstName = req.getParameter("fn");
-        String lastName = req.getParameter("ln");
-        String email = req.getParameter("exampleFormControlInput1");
+        String fn = req.getParameter("fn");
+        String ln = req.getParameter("ln");
+        String em = req.getParameter("exampleFormControlInput1");
         String vehicleType = req.getParameter("tv");
         String vehicleNumber = req.getParameter("vn");
 
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher("ldSuccess.jsp");
-        req.setAttribute("First Name", firstName);
-        req.setAttribute("Last Name", lastName);
-        req.setAttribute("Email", email);
-        req.setAttribute("Vehicle Type", vehicleType);
-        req.setAttribute("Vehicle Number", vehicleNumber);
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("LDSuccess.jsp");
+        req.setAttribute("fn", fn);
+        req.setAttribute("ln", ln);
+        req.setAttribute("em", em);
+        req.setAttribute("vehicleType", vehicleType);
+        req.setAttribute("vehicleNumber", vehicleNumber);
+
         requestDispatcher.forward(req, resp);
     }
 }

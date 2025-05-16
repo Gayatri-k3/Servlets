@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>MyApp</title>
+    <title>Donation</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <style>
@@ -12,6 +12,14 @@
             min-height: 100vh;
             margin: 0;
             background-color: #f5f5dc; /* Beige */
+        }
+        .container {
+            max-width: 700px;
+            margin: 40px auto;
+            padding: 35px;
+            background-color: #fdf5e6;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(160, 82, 45, 0.3);
         }
         .welcome-section {
             flex: 1;
@@ -65,10 +73,16 @@
     </div>
 </nav>
 
-<div class="welcome-section">
-    <h1>Welcome to MyApp!!</h1>
-</div>
+<div class="container">
+    <h2>Donated Successfully! Thank you for your Contribution</h2>
 
+    <div class="info"><span class="label">First Name:</span> ${firstName}</div>
+    <div class="info"><span class="label">Last Name:</span> ${lastName}</div>
+    <div class="info"><span class="label">Email:</span> ${email}</div>
+    <div class="info"><span class="label">Amount:</span> ${amount}</div>
+    <div class="info"><span class="label">Cause:</span> ${cause}</div>
+
+</div>
 <footer>
     <p>&copy; 2025 MyApp | Designed by Gayatri Kulkarni</p>
 </footer>
