@@ -10,7 +10,7 @@ import java.io.IOException;
 @WebServlet(urlPatterns = "/FIRSubmit", loadOnStartup = 1)
 public class FIRServlet extends HttpServlet {
     @Override
-    protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         String firstName = req.getParameter("fname");
         String lastName = req.getParameter("lname");
@@ -18,7 +18,7 @@ public class FIRServlet extends HttpServlet {
         String date = req.getParameter("date");
         String report = req.getParameter("report");
 
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher("Success.jsp");
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("frSuccess.jsp");
         req.setAttribute("First Name", firstName);
         req.setAttribute("Last Name", lastName);
         req.setAttribute("Email", email);

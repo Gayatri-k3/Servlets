@@ -10,7 +10,7 @@ import java.io.IOException;
 @WebServlet(urlPatterns = "/LicenseSubmit", loadOnStartup = 1)
 public class LDServlet extends HttpServlet {
     @Override
-    protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         String firstName = req.getParameter("fn");
         String lastName = req.getParameter("ln");
@@ -18,7 +18,7 @@ public class LDServlet extends HttpServlet {
         String vehicleType = req.getParameter("tv");
         String vehicleNumber = req.getParameter("vn");
 
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher("Success.jsp");
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("ldSuccess.jsp");
         req.setAttribute("First Name", firstName);
         req.setAttribute("Last Name", lastName);
         req.setAttribute("Email", email);

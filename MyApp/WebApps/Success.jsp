@@ -31,7 +31,7 @@
 <body>
 <div class="container">
     <h2>Submission Successful!</h2>
-<h2>First name : ${FirstName}</h2>
+<h2>First name : ${firstName}</h2>
 <!--    <div class="info"><span class="label">First Name:</span> ${firstName}</div>-->
 <!--    <div class="info"><span class="label">Last Name:</span> ${lastName}</div>-->
 <!--    <div class="info"><span class="label">Email:</span> ${email}</div>-->

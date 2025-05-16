@@ -10,7 +10,7 @@ import java.io.IOException;
 @WebServlet(urlPatterns = "/donate", loadOnStartup = 1)
 public class Servlet extends HttpServlet {
     @Override
-    protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
             String firstName = req.getParameter("inputFN");
             String lastName = req.getParameter("inputLN");

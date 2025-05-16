@@ -32,7 +32,7 @@
   <!-- They should go in the "/WEB-INF/web.xml" file in your application.   -->
 
 
-  <!-- ================== Built In Servlet Definitions ==================== -->
+  <!-- ================== Built In com.xworkz.furniture.servlet.Servlet Definitions ==================== -->
 
 
   <!-- The default servlet for all web applications, that serves static     -->
@@ -280,7 +280,7 @@
 
 
   <!-- NOTE: An SSI Filter is also available as an alternative SSI          -->
-  <!-- implementation. Use either the Servlet or the Filter but NOT both.   -->
+  <!-- implementation. Use either the com.xworkz.furniture.servlet.Servlet or the Filter but NOT both.   -->
   <!--                                                                      -->
   <!-- Server Side Includes processing servlet, which processes SSI         -->
   <!-- directives in HTML pages consistent with similar support in web      -->
@@ -362,7 +362,7 @@
   <!--                        platform.                                     -->
   <!--                        Windows: [[a-zA-Z0-9\Q-_.\\/:\E]+]            -->
   <!--                        Others:  [.*]                                 -->
-  <!--                        Note that internally the CGI Servlet treats   -->
+  <!--                        Note that internally the CGI com.xworkz.furniture.servlet.Servlet treats   -->
   <!--                        [.*] as a special case to improve performance -->
   <!--                                                                      -->
   <!--   cmdLineArgumentsEncoded                                            -->
@@ -423,7 +423,7 @@
 -->
 
 
-  <!-- ================ Built In Servlet Mappings ========================= -->
+  <!-- ================ Built In com.xworkz.furniture.servlet.Servlet Mappings ========================= -->
 
 
   <!-- The servlet mappings for the built in servlets defined above.  Note  -->
@@ -532,8 +532,8 @@
 -->
 
 
-  <!-- NOTE: An SSI Servlet is also available as an alternative SSI         -->
-  <!-- implementation. Use either the Servlet or the Filter but NOT both.   -->
+  <!-- NOTE: An SSI com.xworkz.furniture.servlet.Servlet is also available as an alternative SSI         -->
+  <!-- implementation. Use either the com.xworkz.furniture.servlet.Servlet or the Filter but NOT both.   -->
   <!--                                                                      -->
   <!-- Server Side Includes processing filter, which processes SSI          -->
   <!-- directives in HTML pages consistent with similar support in web      -->

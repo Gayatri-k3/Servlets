@@ -10,7 +10,7 @@ import java.io.IOException;
 @WebServlet(urlPatterns = "/lab", loadOnStartup = 1)
 public class LabServlet extends HttpServlet {
     @Override
-    protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         String firstName = req.getParameter("first");
         String lastName = req.getParameter("last");
@@ -27,7 +27,7 @@ public class LabServlet extends HttpServlet {
             }
         }
 
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher("Success.jsp");
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("labSuccess.jsp");
         req.setAttribute("First Name", firstName);
         req.setAttribute("Last Name", lastName);
         req.setAttribute("Email", email);
