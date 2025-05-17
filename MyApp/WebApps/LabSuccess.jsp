@@ -76,11 +76,11 @@
 <div class="container">
     <h2>Laboratory Appointment booked successfully!!</h2>
 
-    <div class="info"><span class="label">First Name:</span> ${firstName}</div>
-    <div class="info"><span class="label">Last Name:</span> ${lastName}</div>
-    <div class="info"><span class="label">Email:</span> ${email}</div>
-    <div class="info"><span class="label">Amount:</span> ${amount}</div>
-    <div class="info"><span class="label">Test Type:</span> ${testType}</div>
+    <div class="info"><span class="label">First Name:</span> ${labdto.firstName}</div>
+    <div class="info"><span class="label">Last Name:</span> ${labdto.lastName}</div>
+    <div class="info"><span class="label">Email:</span> ${labdto.email}</div>
+    <div class="info"><span class="label">Amount:</span> ${labdto.amount}</div>
+    <div class="info"><span class="label">Test Type:</span> ${labdto.testType}</div>
 
 </div>
 <footer>

@@ -76,11 +76,11 @@
 <div class="container">
     <h2>Successfully registered for License!!</h2>
 
-    <div class="info"><span class="label">First Name:</span> ${fn}</div>
-    <div class="info"><span class="label">Last Name:</span> ${ln}</div>
-    <div class="info"><span class="label">Email:</span> ${em}</div>
-    <div class="info"><span class="label">Vehicle Type:</span> ${vehicleType}</div>
-    <div class="info"><span class="label">Vehicle Number:</span> ${vehicleNumber}</div>
+    <div class="info"><span class="label">First Name:</span> ${ldDto.fn}</div>
+    <div class="info"><span class="label">Last Name:</span> ${ldDto.ln}</div>
+    <div class="info"><span class="label">Email:</span> ${ldDto.em}</div>
+    <div class="info"><span class="label">Vehicle Type:</span> ${ldDto.vehicleType}</div>
+    <div class="info"><span class="label">Vehicle Number:</span> ${ldDto.vehicleNumber}</div>
 
 </div>
 <footer>

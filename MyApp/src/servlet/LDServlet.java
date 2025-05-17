@@ -1,5 +1,7 @@
 package servlet;
 
+import com.xworkz.myapp.dto.LdDto;
+
 import javax.servlet.*;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -22,12 +24,15 @@ public class LDServlet extends HttpServlet {
         String vehicleType = req.getParameter("tv");
         String vehicleNumber = req.getParameter("vn");
 
+        LdDto ldDto= new LdDto();
+        ldDto.setVehicleType(vehicleType);
+        ldDto.setEm(em);
+        ldDto.setVehicleNumber(vehicleNumber);
+        ldDto.setFn(fn);
+        ldDto.setLn(ln);
+
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("LDSuccess.jsp");
-        req.setAttribute("fn", fn);
-        req.setAttribute("ln", ln);
-        req.setAttribute("em", em);
-        req.setAttribute("vehicleType", vehicleType);
-        req.setAttribute("vehicleNumber", vehicleNumber);
+        req.setAttribute("ldDto", ldDto);
 
         requestDispatcher.forward(req, resp);
     }

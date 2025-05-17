@@ -66,7 +66,7 @@
 
 <div class="form-container">
     <h2 class="text-center mb-4">Please Enter the Details to register the FIR</h2>
-    <form action="donate" method="post" class="row g-3">
+    <form action="FIRSubmit" method="post" class="row g-3">
         <div class="col-md-6">
             <label class="form-label">First Name</label>
             <input type="text" class="form-control" name="fname" placeholder="First name" required>
@@ -76,16 +76,16 @@
             <input type="text" class="form-control" name="lname" placeholder="Last name" required>
         </div>
         <div class="col-12">
-            <label class="form-label">Contact Number</label>
-            <input type="number" class="form-control" name="inputemail" placeholder="abc@example.com" required>
+            <label class="form-label">Email</label>
+            <input type="email" class="form-control" name="inputemail" placeholder="abc@example.com" required>
         </div>
         <div class="col-md-6">
             <label class="form-label">Incident Date</label>
-            <input type="date" class="form-control" name="date">
+            <input type="date" class="form-control" name="date" required>
         </div>
         <div class="col-md-6">
-            <label class="form-label">Report type</label>
-            <input type="text" class="form-control" name="report">
+            <label class="form-label">Report Type</label>
+            <input type="text" class="form-control" name="report" required>
         </div>
         <div class="col-12 text-center mt-3">
             <button type="submit" class="btn btn-beige px-5">Register</button>

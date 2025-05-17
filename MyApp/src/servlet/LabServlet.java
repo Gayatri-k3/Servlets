@@ -1,20 +1,22 @@
 package servlet;
 
-import javax.servlet.*;
+import com.xworkz.myapp.dto.LabDto;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.*;
 import java.io.IOException;
 
 @WebServlet(urlPatterns = "/lab", loadOnStartup = 1)
 public class LabServlet extends HttpServlet {
-    public LabServlet(){
-        System.out.println("Running lab const");
+    public LabServlet() {
+        System.out.println("Running LabServlet Constructor");
     }
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        System.out.println("running lab ");
+        System.out.println("Running LabServlet doPost()");
 
         String firstName = req.getParameter("first");
         String lastName = req.getParameter("last");
@@ -31,12 +33,21 @@ public class LabServlet extends HttpServlet {
             }
         }
 
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher("LabSuccess.jsp");
-        req.setAttribute("firstName", firstName);
-        req.setAttribute("lastName", lastName);
-        req.setAttribute("email", email);
-        req.setAttribute("amount", amount);
-        req.setAttribute("testType", testType);
-        requestDispatcher.forward(req, resp);
+        LabDto labdto = new LabDto();
+        labdto.setFirstName(firstName);
+        labdto.setLastName(lastName);
+        labdto.setEmail(email);
+        labdto.setTestType(testType);
+        labdto.setAmount(amount);
+
+        System.out.println("LabDto: " + labdto);
+
+        RequestDispatcher dispatcher = req.getRequestDispatcher("LabSuccess.jsp");
+        if (dispatcher != null) {
+            req.setAttribute("labdto", labdto);
+            dispatcher.forward(req, resp);
+        } else {
+            resp.getWriter().write("LabSuccess.jsp not found.");
+        }
     }
 }

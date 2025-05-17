@@ -76,10 +76,10 @@
 <div class="container">
     <h2>Thank you for the Feedback!!</h2>
 
-    <div class="info"><span class="label">First Name:</span> ${firstName}</div>
-    <div class="info"><span class="label">Last Name:</span> ${lastName}</div>
-    <div class="info"><span class="label">Email:</span> ${email}</div>
-    <div class="info"><span class="label">Message:</span> ${message}</div>
+    <div class="info"><span class="label">First Name:</span> ${fbDto.firstName}</div>
+    <div class="info"><span class="label">Last Name:</span> ${fbDto.lastName}</div>
+    <div class="info"><span class="label">Email:</span> ${fbDto.email}</div>
+    <div class="info"><span class="label">Message:</span> ${fbDto.message}</div>
 
 </div>
 <footer>

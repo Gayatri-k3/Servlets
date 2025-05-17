@@ -1,5 +1,7 @@
 package com.xworkz.furniture.servlet;
 
+import com.xworkz.furniture.dto.Furnituredto;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -24,13 +26,15 @@ public class Servlet extends HttpServlet {
         String size = req.getParameter("size");
         String productBenefits = req.getParameter("msg");
 
-        RequestDispatcher reqD= req.getRequestDispatcher("Success.jsp");
-        req.setAttribute("Brand", brand);
-        req.setAttribute("model", model);
-        req.setAttribute("material",material);
-        req.setAttribute("size", size);
-        req.setAttribute("product benefits", productBenefits);
+        Furnituredto furnituredto = new Furnituredto();
+        furnituredto.setBrand(brand);
+        furnituredto.setMaterial(material);
+        furnituredto.setModel(model);
+        furnituredto.setSize(size);
+        furnituredto.setProductBenefits(productBenefits);
 
-        reqD.forward(req, resp);
+        RequestDispatcher rd = req.getRequestDispatcher("Success.jsp");
+        req.setAttribute("furnituredto", furnituredto);
+        rd.forward(req, resp);
     }
 }

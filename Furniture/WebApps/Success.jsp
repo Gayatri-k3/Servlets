@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Donation</title>
+    <title>Furniture</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <style>
@@ -13,15 +13,14 @@
             margin: 0;
             background-color: #f5f5dc; /* Beige */
         }
-        .welcome-section {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 60px 20px;
-            background-color: #fdf5e6; /* Lighter beige */
+
+        .container {
+            max-width: 700px;
+            margin: 40px auto;
+            padding: 35px;
+            background-color: #fdf5e6;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(160, 82, 45, 0.3);
         }
         h1, h2 {
             color: #6b4c3b; /* Warm brown */
@@ -63,10 +62,29 @@
 </nav>
 
 <div class="welcome-section">
-    <h1>Successfully saved Furniture info!!</h1>
-    <h2>Brand: ${brand}</h2>
+    <h1 align="center">Successfully saved Furniture info!!</h1>
 
 </div>
+<table class="container">
+    <thead class="thead-dark">
+    <tr>
+        <th scope="col">Brand</th>
+        <th scope="col">Model Name</th>
+        <th scope="col">Material</th>
+        <th scope="col">Size</th>
+        <th scope="col">Product Benefits</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <th scope="row">${furnituredto.brand}</th>
+        <td>${furnituredto.model}</td>
+        <td>${furnituredto.material}</td>
+        <td>${furnituredto.size}</td>
+        <td>${furnituredto.productBenefits}</td>
+    </tr>
+    </tbody>
+</table>
 
 <footer>
     <p>&copy; 2025 MyApp | Designed by Gayatri Kulkarni</p>

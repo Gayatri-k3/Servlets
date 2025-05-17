@@ -76,11 +76,11 @@
 <div class="container">
     <h2>Donated Successfully! Thank you for your Contribution</h2>
 
-    <div class="info"><span class="label">First Name:</span> ${firstName}</div>
-    <div class="info"><span class="label">Last Name:</span> ${lastName}</div>
-    <div class="info"><span class="label">Email:</span> ${email}</div>
-    <div class="info"><span class="label">Amount:</span> ${amount}</div>
-    <div class="info"><span class="label">Cause:</span> ${cause}</div>
+    <div class="info"><span class="label">First Name:</span> ${donationDto.firstName}</div>
+    <div class="info"><span class="label">Last Name:</span> ${donationDto.lastName}</div>
+    <div class="info"><span class="label">Email:</span> ${donationDto.email}</div>
+    <div class="info"><span class="label">Amount:</span> ${donationDto.amount}</div>
+    <div class="info"><span class="label">Cause:</span> ${donationDto.cause}</div>
 
 </div>
 <footer>

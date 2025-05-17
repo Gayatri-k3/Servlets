@@ -1,5 +1,7 @@
 package servlet;
 
+import com.xworkz.myapp.dto.DonationDto;
+
 import javax.servlet.*;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -30,13 +32,18 @@ public class Servlet extends HttpServlet {
                     System.out.println("Invalid amount entered.");
                 }
             }
+        DonationDto donationDto = new DonationDto();
+        donationDto.setFirstName(firstName);
+        donationDto.setLastName(lastName);
+        donationDto.setAmount(amount);
+        donationDto.setCause(cause);
+        donationDto.setEmail(email);
+
+
 
     RequestDispatcher requestDispatcher = req.getRequestDispatcher("DSuccess.jsp");
-            req.setAttribute("firstName", firstName);
-            req.setAttribute("lastName", lastName);
-            req.setAttribute("email", email);
-            req.setAttribute("amount", amount);
-            req.setAttribute("cause", cause);
+            req.setAttribute("donationDto", donationDto);
+
         requestDispatcher.forward(req,resp);
     }
 }

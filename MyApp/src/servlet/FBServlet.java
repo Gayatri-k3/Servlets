@@ -1,5 +1,7 @@
 package servlet;
 
+import com.xworkz.myapp.dto.FbDto;
+
 import javax.servlet.*;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -22,12 +24,14 @@ public class FBServlet extends HttpServlet {
         String email = req.getParameter("em");
         String message = req.getParameter("msg");
 
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher("FBSuccess.jsp");
-        req.setAttribute("firstName", firstName);
-        req.setAttribute("lastName", lastName);
-        req.setAttribute("email", email);
-        req.setAttribute("message", message);
+        FbDto fbDto = new FbDto();
+        fbDto.setEmail(email);
+        fbDto.setFirstName(firstName);
+        fbDto.setLastName(lastName);
+        fbDto.setMessage(message);
 
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("FBSuccess.jsp");
+        req.setAttribute("fbDto", fbDto);
         requestDispatcher.forward(req, resp);
     }
 }
