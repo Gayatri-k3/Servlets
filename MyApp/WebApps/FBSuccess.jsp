@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Donation</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <meta charset="UTF-8" />
+    <title>Feedback</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <style>
         body {
@@ -12,31 +12,41 @@
             min-height: 100vh;
             margin: 0;
             background-color: #f5f5dc; /* Beige */
+            font-family: Arial, sans-serif;
         }
         .container {
-            max-width: 700px;
+            max-width: 900px;
             margin: 40px auto;
             padding: 35px;
-            background-color: #fdf5e6;
+            background-color: #fdf5e6; /* Light Beige */
             border-radius: 15px;
             box-shadow: 0 0 15px rgba(160, 82, 45, 0.3);
         }
-        .welcome-section {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 60px 20px;
-            background-color: #fdf5e6; /* Lighter beige */
-        }
         h1, h2 {
             color: #6b4c3b; /* Warm brown */
+            text-align: center;
+        }
+        table {
+            width: 100%;
+            font-size: 1.1rem;
+            border-collapse: collapse;
+            margin-top: 1.5rem;
+        }
+        thead {
+            background-color: #deb887; /* Burlywood */
+            color: #4b2e1e;
+            font-weight: bold;
+        }
+        th, td {
+            padding: 14px 18px;
+            text-align: center;
+            border: 1px solid #deb887;
+            background-color: #fffaf0; /* Floral white */
+            color: #4b2e1e;
         }
         footer {
             text-align: center;
-            background-color: #e6d8ad;
+            background-color: #e6d8ad; /* Light brown */
             padding: 10px;
             position: fixed;
             bottom: 0;
@@ -67,23 +77,37 @@
                 <a class="nav-link" href="LicenseDetails.jsp">License Details</a>
                 <a class="nav-link" href="FIR.jsp">FIR Details</a>
                 <a class="nav-link" href="Laboratory.jsp">Laboratory</a>
-                <a class="nav-link" href="FeedBack.jsp">FeedBack</a>
+                <a class="nav-link" href="FeedBack.jsp">Feedback</a>
             </div>
         </div>
     </div>
 </nav>
 
 <div class="container">
-    <h2>Thank you for the Feedback!!</h2>
-
-    <div class="info"><span class="label">First Name:</span> ${fbDto.firstName}</div>
-    <div class="info"><span class="label">Last Name:</span> ${fbDto.lastName}</div>
-    <div class="info"><span class="label">Email:</span> ${fbDto.email}</div>
-    <div class="info"><span class="label">Message:</span> ${fbDto.message}</div>
-
+    <h2>Successfully saved Feedback info!!</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Message</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>${fbDto.firstName}</td>
+            <td>${fbDto.lastName}</td>
+            <td>${fbDto.email}</td>
+            <td>${fbDto.message}</td>
+        </tr>
+        </tbody>
+    </table>
 </div>
+
 <footer>
     <p>&copy; 2025 MyApp | Designed by Gayatri Kulkarni</p>
 </footer>
+
 </body>
 </html>
