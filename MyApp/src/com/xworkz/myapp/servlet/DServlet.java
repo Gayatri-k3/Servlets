@@ -1,6 +1,8 @@
-package servlet;
+package com.xworkz.myapp.servlet;
 
 import com.xworkz.myapp.dto.DonationDto;
+import com.xworkz.myapp.service.DService;
+import com.xworkz.myapp.service.DServiceImpl;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebServlet;
@@ -10,8 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet(urlPatterns = "/donate", loadOnStartup = 1)
-public class Servlet extends HttpServlet {
-    public Servlet(){
+public class DServlet extends HttpServlet {
+    public DServlet(){
         System.out.println("running Donation const");
     }
     @Override
@@ -39,11 +41,18 @@ public class Servlet extends HttpServlet {
         donationDto.setCause(cause);
         donationDto.setEmail(email);
 
-
-
-    RequestDispatcher requestDispatcher = req.getRequestDispatcher("DSuccess.jsp");
+        DService dService = new DServiceImpl();
+        boolean saved = dService.save(donationDto);
+        if(saved){
+            RequestDispatcher requestDispatcher = req.getRequestDispatcher("DSuccess.jsp");
             req.setAttribute("donationDto", donationDto);
-
-        requestDispatcher.forward(req,resp);
+            req.setAttribute("message", "donated successfully");
+            requestDispatcher.forward(req,resp);
+        }
+        else{
+            RequestDispatcher requestDispatcher = req.getRequestDispatcher("Donation.jsp");
+            req.setAttribute("donationDto", donationDto);
+            req.setAttribute("message", "Donation failed");
+        }
     }
 }

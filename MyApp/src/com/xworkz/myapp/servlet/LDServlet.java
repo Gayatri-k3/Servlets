@@ -1,6 +1,8 @@
-package servlet;
+package com.xworkz.myapp.servlet;
 
 import com.xworkz.myapp.dto.LdDto;
+import com.xworkz.myapp.service.LDService;
+import com.xworkz.myapp.service.LDServiceImpl;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebServlet;
@@ -31,9 +33,19 @@ public class LDServlet extends HttpServlet {
         ldDto.setFn(fn);
         ldDto.setLn(ln);
 
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher("LDSuccess.jsp");
-        req.setAttribute("ldDto", ldDto);
-
-        requestDispatcher.forward(req, resp);
+        LDService ldService = new LDServiceImpl();
+        boolean saved = ldService.save(ldDto);
+        if(saved) {
+            RequestDispatcher requestDispatcher = req.getRequestDispatcher("LDSuccess.jsp");
+            req.setAttribute("ldDto", ldDto);
+            req.setAttribute("message","License registered successfully ");
+            requestDispatcher.forward(req, resp);
+        }
+        else{
+            RequestDispatcher requestDispatcher = req.getRequestDispatcher("LicenseDetails.jsp");
+            req.setAttribute("ldDto", ldDto);
+            req.setAttribute("message","License registration failed ");
+            requestDispatcher.forward(req, resp);
+        }
     }
 }

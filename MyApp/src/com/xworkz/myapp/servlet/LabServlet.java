@@ -1,6 +1,8 @@
-package servlet;
+package com.xworkz.myapp.servlet;
 
 import com.xworkz.myapp.dto.LabDto;
+import com.xworkz.myapp.service.LabService;
+import com.xworkz.myapp.service.LabServiceImpl;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -42,12 +44,23 @@ public class LabServlet extends HttpServlet {
 
         System.out.println("LabDto: " + labdto);
 
-        RequestDispatcher dispatcher = req.getRequestDispatcher("LabSuccess.jsp");
-        if (dispatcher != null) {
+        LabService labService = new LabServiceImpl();
+        boolean saved = labService.save(labdto);
+        if(saved) {
+            RequestDispatcher dispatcher = req.getRequestDispatcher("LabSuccess.jsp");
+            req.setAttribute("message", "Laboratory Appointment booked");
+            if (dispatcher != null) {
+                req.setAttribute("labdto", labdto);
+                dispatcher.forward(req, resp);
+            } else {
+                resp.getWriter().write("LabSuccess.jsp not found.");
+            }
+        }
+        else{
+            RequestDispatcher dispatcher = req.getRequestDispatcher("Laboratory.jsp");
+            req.setAttribute("message", "Laboratory Appointment booking failed");
             req.setAttribute("labdto", labdto);
             dispatcher.forward(req, resp);
-        } else {
-            resp.getWriter().write("LabSuccess.jsp not found.");
         }
     }
 }

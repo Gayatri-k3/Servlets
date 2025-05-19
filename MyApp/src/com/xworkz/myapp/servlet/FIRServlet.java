@@ -1,6 +1,8 @@
-package servlet;
+package com.xworkz.myapp.servlet;
 
 import com.xworkz.myapp.dto.FIRDto;
+import com.xworkz.myapp.service.FIRService;
+import com.xworkz.myapp.service.FIRServiceImpl;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebServlet;
@@ -35,9 +37,19 @@ public class FIRServlet extends HttpServlet {
         firDto.setDate(date);
         firDto.setReport(report);
 
-        req.setAttribute("firDto", firDto);
-
-        RequestDispatcher dispatcher = req.getRequestDispatcher("FIRSuccess.jsp");
-        dispatcher.forward(req, resp);
+        FIRService firService = new FIRServiceImpl();
+        boolean saved = firService.save(firDto);
+        if(saved) {
+            RequestDispatcher dispatcher = req.getRequestDispatcher("FIRSuccess.jsp");
+            req.setAttribute("message", "FIR filed successfully");
+            req.setAttribute("firDto", firDto);
+            dispatcher.forward(req, resp);
+        }
+        else{
+            RequestDispatcher dispatcher = req.getRequestDispatcher("FIR.jsp");
+            req.setAttribute("message", "FIR filing failed");
+            req.setAttribute("firDto", firDto);
+            dispatcher.forward(req, resp);
+        }
     }
 }

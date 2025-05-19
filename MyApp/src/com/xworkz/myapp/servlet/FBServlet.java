@@ -1,6 +1,8 @@
-package servlet;
+package com.xworkz.myapp.servlet;
 
 import com.xworkz.myapp.dto.FbDto;
+import com.xworkz.myapp.service.FBService;
+import com.xworkz.myapp.service.FBServiceImpl;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebServlet;
@@ -30,8 +32,18 @@ public class FBServlet extends HttpServlet {
         fbDto.setLastName(lastName);
         fbDto.setMessage(message);
 
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher("FBSuccess.jsp");
-        req.setAttribute("fbDto", fbDto);
-        requestDispatcher.forward(req, resp);
+        FBService fbService = new FBServiceImpl();
+        boolean saved= fbService.save(fbDto);
+        if(saved) {
+            RequestDispatcher requestDispatcher = req.getRequestDispatcher("FBSuccess.jsp");
+            req.setAttribute("fbDto", fbDto);
+            req.setAttribute("message", "Feedback Sent");
+            requestDispatcher.forward(req, resp);
+        }
+        else{
+            RequestDispatcher requestDispatcher = req.getRequestDispatcher("FeedBack.jsp");
+            req.setAttribute("fbDto", fbDto);
+            req.setAttribute("message", "Feedback failed");
+        }
     }
 }
