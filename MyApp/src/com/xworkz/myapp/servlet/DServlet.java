@@ -53,6 +53,7 @@ public class DServlet extends HttpServlet {
             RequestDispatcher requestDispatcher = req.getRequestDispatcher("Donation.jsp");
             req.setAttribute("donationDto", donationDto);
             req.setAttribute("message", "Donation failed");
+            requestDispatcher.forward(req,resp);
         }
     }
 }

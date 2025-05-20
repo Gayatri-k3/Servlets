@@ -63,7 +63,7 @@
         </div>
     </div>
 </nav>
-
+<h3 align="center" style="color: red;">${message}</h3>
 <div class="form-container">
     <h2 class="text-center mb-4">Please Enter the Details to Make a Donation</h2>
     <form action="donate" method="post" class="row g-3">
