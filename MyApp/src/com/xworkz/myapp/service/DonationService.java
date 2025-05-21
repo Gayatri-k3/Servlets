@@ -2,6 +2,6 @@ package com.xworkz.myapp.service;
 
 import com.xworkz.myapp.dto.DonationDto;
 
-public interface DService {
+public interface DonationService {
     boolean save(DonationDto donationDto);
 }

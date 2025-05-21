@@ -1,8 +1,8 @@
 package com.xworkz.myapp.servlet;
 
 import com.xworkz.myapp.dto.FbDto;
-import com.xworkz.myapp.service.FBService;
-import com.xworkz.myapp.service.FBServiceImpl;
+import com.xworkz.myapp.service.FeedbackService;
+import com.xworkz.myapp.service.FeedbackServiceImpl;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebServlet;
@@ -12,9 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet(urlPatterns = "/FBSubmit", loadOnStartup = 1)
-public class FBServlet extends HttpServlet {
+public class FeedbackServlet extends HttpServlet {
 
-    public FBServlet() {
+    public FeedbackServlet() {
         System.out.println("Running FeedBack Servlet const");
     }
     @Override
@@ -32,10 +32,10 @@ public class FBServlet extends HttpServlet {
         fbDto.setLastName(lastName);
         fbDto.setMessage(message);
 
-        FBService fbService = new FBServiceImpl();
-        boolean saved= fbService.save(fbDto);
+        FeedbackService feedbackService = new FeedbackServiceImpl();
+        boolean saved= feedbackService.save(fbDto);
         if(saved) {
-            RequestDispatcher requestDispatcher = req.getRequestDispatcher("FBSuccess.jsp");
+            RequestDispatcher requestDispatcher = req.getRequestDispatcher("FeedbackSuccess.jsp");
             req.setAttribute("fbDto", fbDto);
             req.setAttribute("message", "Feedback Sent");
             requestDispatcher.forward(req, resp);

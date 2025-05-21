@@ -2,7 +2,7 @@ package com.xworkz.myapp.service;
 
 import com.xworkz.myapp.dto.FbDto;
 
-public class FBServiceImpl implements FBService{
+public class FeedbackServiceImpl implements FeedbackService {
     @Override
     public boolean save(FbDto fbDto) {
         return true;

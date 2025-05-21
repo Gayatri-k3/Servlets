@@ -2,6 +2,6 @@ package com.xworkz.myapp.service;
 
 import com.xworkz.myapp.dto.FbDto;
 
-public interface FBService {
+public interface FeedbackService {
     boolean save(FbDto fbDto);
 }

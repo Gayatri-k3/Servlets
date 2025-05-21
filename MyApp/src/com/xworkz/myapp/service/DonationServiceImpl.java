@@ -2,7 +2,7 @@ package com.xworkz.myapp.service;
 
 import com.xworkz.myapp.dto.DonationDto;
 
-public class DServiceImpl implements DService{
+public class DonationServiceImpl implements DonationService {
     @Override
     public boolean save(DonationDto donationDto) {
         String donorName = donationDto.getFirstName();
@@ -14,7 +14,7 @@ public class DServiceImpl implements DService{
             return false;
         }
         double amount = donationDto.getAmount();
-        if(amount>500){
+        if(amount>=500){
             System.out.println("Donated amount above 500rs");
         }
         else{

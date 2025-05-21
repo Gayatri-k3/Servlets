@@ -1,8 +1,8 @@
 package com.xworkz.myapp.servlet;
 
 import com.xworkz.myapp.dto.LdDto;
-import com.xworkz.myapp.service.LDService;
-import com.xworkz.myapp.service.LDServiceImpl;
+import com.xworkz.myapp.service.LicenseService;
+import com.xworkz.myapp.service.LicenseServiceImpl;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebServlet;
@@ -12,8 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet(urlPatterns = "/LicenseSubmit", loadOnStartup = 1)
-public class LDServlet extends HttpServlet {
-    public LDServlet(){
+public class LicenseServlet extends HttpServlet {
+    public LicenseServlet(){
         System.out.println("running license const");
     }
     @Override
@@ -33,10 +33,10 @@ public class LDServlet extends HttpServlet {
         ldDto.setFn(fn);
         ldDto.setLn(ln);
 
-        LDService ldService = new LDServiceImpl();
-        boolean saved = ldService.save(ldDto);
+        LicenseService licenseService = new LicenseServiceImpl();
+        boolean saved = licenseService.save(ldDto);
         if(saved) {
-            RequestDispatcher requestDispatcher = req.getRequestDispatcher("LDSuccess.jsp");
+            RequestDispatcher requestDispatcher = req.getRequestDispatcher("LicenseSuccess.jsp");
             req.setAttribute("ldDto", ldDto);
             req.setAttribute("message","License registered successfully ");
             requestDispatcher.forward(req, resp);
