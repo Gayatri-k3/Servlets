@@ -1,6 +1,8 @@
 package com.xworkz.symphony.servlets;
 
 import com.xworkz.symphony.dto.ProductDto;
+import com.xworkz.symphony.repository.ProductRepository;
+import com.xworkz.symphony.repository.ProductRepositoryImpl;
 import com.xworkz.symphony.service.ProductService;
 import com.xworkz.symphony.service.ProductServiceImpl;
 
@@ -14,12 +16,21 @@ import java.io.IOException;
 
 @WebServlet(urlPatterns = "/submit", loadOnStartup = 1)
 public class ProductServlet extends HttpServlet {
+    private ProductService productService;
+
     public ProductServlet(){
-        System.out.println("ruuning no-arg const in ProductServlet");
+        System.out.println("running no-arg const in ProductServlet");
     }
+
+    @Override
+    public void init() throws ServletException {
+        ProductRepository productRepository =new ProductRepositoryImpl();
+        this.productService = new ProductServiceImpl();
+    }
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        System.out.println("Running doPost in ProductServlet");
+        System.out.println("Running doPost in ProductServlet once");
         String name = req.getParameter("name");
         String type = req.getParameter("type");
         String priceInStr = req.getParameter("priceIn");
@@ -86,7 +97,7 @@ public class ProductServlet extends HttpServlet {
 
 
 
-        ProductService productService = new ProductServiceImpl();
+
         boolean saved = productService.save(productDto);
         if(saved){
             RequestDispatcher reqD = req.getRequestDispatcher("ProductSuccess.jsp");

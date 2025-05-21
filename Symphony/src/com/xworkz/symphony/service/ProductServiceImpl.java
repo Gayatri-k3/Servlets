@@ -114,7 +114,7 @@ public class ProductServiceImpl implements ProductService {
 
         System.out.println("All fields are valid, saving ProductDto...");
         ProductRepository productRepository = new ProductRepositoryImpl();
-        boolean saved = productRepository.persist(productDto);
-        return saved;
+        boolean persisted = productRepository.persist(productDto);
+        return persisted;
     }
 }
