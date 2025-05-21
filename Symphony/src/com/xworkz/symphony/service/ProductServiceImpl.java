@@ -1,6 +1,8 @@
 package com.xworkz.symphony.service;
 
 import com.xworkz.symphony.dto.ProductDto;
+import com.xworkz.symphony.repository.ProductRepository;
+import com.xworkz.symphony.repository.ProductRepositoryImpl;
 
 public class ProductServiceImpl implements ProductService {
     @Override
@@ -111,6 +113,8 @@ public class ProductServiceImpl implements ProductService {
         }
 
         System.out.println("All fields are valid, saving ProductDto...");
-        return true;
+        ProductRepository productRepository = new ProductRepositoryImpl();
+        boolean saved = productRepository.persist(productDto);
+        return saved;
     }
 }

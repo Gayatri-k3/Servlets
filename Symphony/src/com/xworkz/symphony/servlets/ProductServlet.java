@@ -84,6 +84,8 @@ public class ProductServlet extends HttpServlet {
         productDto.setWarranty(warranty);
         productDto.setReturnPolicy(returnPolicy);
 
+
+
         ProductService productService = new ProductServiceImpl();
         boolean saved = productService.save(productDto);
         if(saved){
