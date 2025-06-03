@@ -20,7 +20,7 @@ public class FeedbackServiceImpl implements FeedbackService {
             valid = false;
         }
 
-        if (feedbackDto.getCourse() == null || feedbackDto.getCourse().equalsIgnoreCase("Select")) {
+        if (feedbackDto.getType() == null || feedbackDto.getType().equalsIgnoreCase("Select")) {
             System.err.println("Invalid course type");
             valid = false;
         }
