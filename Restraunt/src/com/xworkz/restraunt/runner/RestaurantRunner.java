@@ -12,17 +12,17 @@ public class RestaurantRunner {
         RestaurantDto restaurantDto = new RestaurantDto();
 
         try {
-            restaurantDto.setName("SpiceVilla");
-            restaurantDto.setLocation("Hubballi");
-            restaurantDto.setEmail("contact@spicevilla.in");
-            restaurantDto.setContactDetails("9348263745");
-            restaurantDto.setRating("4.2");
-            restaurantDto.setFoodMenu(new String[]{"Paneer Tikka", "Veg Biryani"});
-            restaurantDto.setType("Veg & Non-Veg");
-            restaurantDto.setOpeningTime(LocalTime.of(9, 15));
-            restaurantDto.setClosingTime(LocalTime.of(11, 45));
-            restaurantDto.setBookedDate(LocalDate.now().plusDays(2));
-            restaurantDto.setBookedTime(LocalTime.of(10, 30));
+            restaurantDto.setName("1");
+            restaurantDto.setLocation(null);
+            restaurantDto.setEmail(null);
+            restaurantDto.setContactDetails(null);
+            restaurantDto.setRating("2.5");
+            restaurantDto.setFoodMenu(new String[]{});
+            restaurantDto.setType(null);
+            restaurantDto.setOpeningTime(LocalTime.of(8, 30));
+            restaurantDto.setClosingTime(LocalTime.of(13, 0));
+            restaurantDto.setBookedDate(LocalDate.now().minusDays(1));
+            restaurantDto.setBookedTime(LocalTime.of(8, 0));
         } catch (Exception e) {
             System.err.println("Error setting DTO values: " + e.getMessage());
         }
