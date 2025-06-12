@@ -8,12 +8,14 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalTime;
 
 public class WeatherRepositoryImpl implements WeatherRepository{
 
     public WeatherRepositoryImpl(){
         System.out.println("Running no-arg const of WeatherRepoImpl");
     }
+    LocalTime localTime = LocalTime.now();
     @Override
     public boolean persist(WeatherDTO weatherDTO) {
         if(weatherDTO != null){
@@ -29,7 +31,7 @@ public class WeatherRepositoryImpl implements WeatherRepository{
                         weatherDTO.getWind() + ", '" + weatherDTO.getSunrise() + "', '" +
                         weatherDTO.getSunset() + "', '" + weatherDTO.getRainStart() + "', '" +
                         weatherDTO.getRainEnd() + "', '" + weatherDTO.getMoonRise() + "', '" +
-                        weatherDTO.getMoonSet() + "', NOW())");
+                        weatherDTO.getMoonSet() + "', localTime)");
                 Statement statement = connection.createStatement();
                 statement.executeUpdate(query);
             } catch (ClassNotFoundException | SQLException e) {
