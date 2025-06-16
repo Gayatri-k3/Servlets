@@ -12,7 +12,7 @@ import java.time.LocalDate;
 public class ShoeDTO {
     private String brand;
     private double size;
-    private Boolean payment;
+    private String payment;
     private String material;
     private LocalDate manDate;
     private  String type;

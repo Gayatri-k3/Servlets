@@ -80,11 +80,11 @@
             <div class="mb-3">
                 <label class="form-label">Payment Method:</label><br>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="payment" id="cash" value="true">
+                    <input class="form-check-input" type="radio" name="payment" id="cash" value="cash">
                     <label class="form-check-label" for="cash">Pay by Cash</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="payment" id="upi" value="false">
+                    <input class="form-check-input" type="radio" name="payment" id="upi" value="upi">
                     <label class="form-check-label" for="upi">Pay by UPI</label>
                 </div>
             </div>

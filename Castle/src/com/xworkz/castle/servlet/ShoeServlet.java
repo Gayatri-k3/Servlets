@@ -51,11 +51,11 @@ public class ShoeServlet extends HttpServlet {
                 throw new RuntimeException(e);
             }
         }
-        ShoeDTO shoeDTO = new ShoeDTO(brand,sizeD,paymentB,material,manuDate,type);
+        ShoeDTO shoeDTO = new ShoeDTO(brand,sizeD,payment,material,manuDate,type);
         shoeDTO.setBrand(brand);
         shoeDTO.setType(type);
         shoeDTO.setSize(sizeD);
-        shoeDTO.setPayment(paymentB);
+        shoeDTO.setPayment(payment);
         shoeDTO.setMaterial(material);
         shoeDTO.setManDate(manuDate);
 

@@ -26,7 +26,7 @@ public class ShoeServiceImpl implements ShoeService{
             System.err.println("Invalid Type");
             return false;
         }
-        if (!shoeDTO.getPayment() && shoeDTO.getPayment() != false) {
+        if (shoeDTO.getPayment() == null || shoeDTO.getPayment().isEmpty()) {
             System.out.println("Invalid payment method");
             return false;
         }

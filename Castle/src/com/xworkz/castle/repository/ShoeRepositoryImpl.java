@@ -8,11 +8,13 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class ShoeRepositoryImpl implements ShoeRepository{
     public ShoeRepositoryImpl(){
         System.out.println("Running No-arg const of Shoe repo impl");
     }
+    LocalDateTime local = LocalDateTime.now();
     @Override
     public boolean persist(ShoeDTO shoeDTO) {
         if(shoeDTO != null){
@@ -26,7 +28,7 @@ public class ShoeRepositoryImpl implements ShoeRepository{
                         shoeDTO.getPayment() + "', '" +
                         shoeDTO.getMaterial() + "', '" +
                         shoeDTO.getManDate() + "', '" +
-                        shoeDTO.getType() + "')";
+                        shoeDTO.getType() + "', NOW())";
                 Statement statement = connection.createStatement();
                 statement.executeUpdate(query);
             } catch (SQLException | ClassNotFoundException e) {
