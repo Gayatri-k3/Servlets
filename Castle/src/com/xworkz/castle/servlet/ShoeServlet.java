@@ -81,7 +81,7 @@ public class ShoeServlet extends HttpServlet {
         String shoeIDStr=req.getParameter("shoeID");
         if(!(shoeIDStr == null && shoeIDStr.isEmpty()))
         {
-            int laptopId=Integer.parseInt(shoeIDStr);
+            int shoeID=Integer.parseInt(shoeIDStr);
 
             ShoeService laptopService=new ShoeServiceImpl();
             Optional<ShoeDTO> optionalShoeDTO= laptopService.findById(shoeID);

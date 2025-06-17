@@ -19,7 +19,7 @@
         <form class="p-3 fs-5" action="shoe" method="GET" id="formValid">
             <div class="mb-3">
                 <label for="shoeId" class="form-label">Enter the Shoe ID</label>
-                <input type="text" class="form-control" id="shoeId" name="shoeId">
+                <input type="text" class="form-control" id="shoeId" name="shoeID">
                 <span id="shoeIdError" class="error small text-danger"></span>
             </div>
 
