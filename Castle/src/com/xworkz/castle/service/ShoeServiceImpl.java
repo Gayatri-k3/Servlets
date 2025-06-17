@@ -4,6 +4,8 @@ import com.xworkz.castle.dto.ShoeDTO;
 import com.xworkz.castle.repository.ShoeRepository;
 import com.xworkz.castle.repository.ShoeRepositoryImpl;
 
+import java.util.Optional;
+
 public class ShoeServiceImpl implements ShoeService{
     public ShoeServiceImpl(){
         System.out.println("Running no-arg const of shoe service impl");
@@ -42,5 +44,19 @@ public class ShoeServiceImpl implements ShoeService{
         ShoeRepository shoeRepository = new ShoeRepositoryImpl();
         shoeRepository.persist(shoeDTO);
         return true;
+    }
+
+    @Override
+    public Optional<ShoeDTO> findById(int shoeID) {
+        System.out.println("findById method in shoe service implementation");
+        if(shoeID>0)
+        {
+            System.out.println("shoe is valid");
+
+            ShoeRepository shoeRepository=new ShoeRepositoryImpl();
+            shoeRepository.findById(shoeID);
+        }
+
+        return ShoeService.super.findById(shoeID);
     }
 }

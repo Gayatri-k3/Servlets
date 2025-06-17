@@ -46,7 +46,7 @@ function validatePrice() {
   const price = document.querySelector("#price").value.trim();
   const numericPrice = parseFloat(price);
   if (price === "" || isNaN(numericPrice)) {
-    document.querySelector("#priceError").textContent = "Price is required";
+    document.querySelector("#priceError").textContent = "Price is required and must be numeric";
     return false;
   } else if (numericPrice < 10000 || numericPrice > 1000000) {
     document.querySelector("#priceError").textContent =
@@ -84,7 +84,7 @@ function validateAvailableAndWarranty() {
 function validateManufacturedDate() {
   const manufacturedDate = document.querySelector("#manufacturedDate").value.trim();
   if (manufacturedDate === "") {
-    document.querySelector("#manufacturedDateError").textContent = "Fill the date";
+    document.querySelector("#manufacturedDateError").textContent = "Fill the manufactured date";
     return false;
   } else {
     const currdate = new Date();

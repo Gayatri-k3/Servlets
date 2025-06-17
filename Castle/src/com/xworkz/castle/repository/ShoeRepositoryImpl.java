@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 public class ShoeRepositoryImpl implements ShoeRepository{
     public ShoeRepositoryImpl(){
@@ -37,6 +38,11 @@ public class ShoeRepositoryImpl implements ShoeRepository{
         }
         System.out.println("persist running in repo");
         return true;
+    }
+    @Override
+    public Optional<ShoeDTO> findById(int shoeID) {
+        System.out.println("findById method in shoe Repository impl");
+        return ShoeRepository.super.findById(shoeID);
     }
 }
 
