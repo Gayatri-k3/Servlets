@@ -1,6 +1,5 @@
 package com.xworkz.castle.servlet;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
 import com.xworkz.castle.dto.ShoeDTO;
 import com.xworkz.castle.service.ShoeService;
 import com.xworkz.castle.service.ShoeServiceImpl;
@@ -70,6 +69,7 @@ public class ShoeServlet extends HttpServlet {
         else {
             req.setAttribute("Failed", "Data is Invalid");
             System.out.println("Failed");
+            req.setAttribute("ShoeDTO", shoeDTO);
         }
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("Shoe.jsp");
         requestDispatcher.forward(req, resp);
@@ -79,18 +79,24 @@ public class ShoeServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         System.out.println("doGet method in Shoe servlet");
         String shoeIDStr=req.getParameter("shoeID");
-        if(!(shoeIDStr == null && shoeIDStr.isEmpty()))
+        if (shoeIDStr != null && !shoeIDStr.isEmpty())
         {
             int shoeID=Integer.parseInt(shoeIDStr);
 
-            ShoeService laptopService=new ShoeServiceImpl();
-            Optional<ShoeDTO> optionalShoeDTO= laptopService.findById(shoeID);
-            if(optionalShoeDTO.isPresent()){
-                System.out.println("Laptop Id is found");
+            ShoeService shoeService=new ShoeServiceImpl();
+            Optional<ShoeDTO> optionalShoeDTO= shoeService.findById(shoeID);
+            if(optionalShoeDTO.isPresent()) {
+                System.out.println("shoe Id is found");
+                ShoeDTO shoeDTO = optionalShoeDTO.get();
+                req.setAttribute("message", "shoe Details");
+                req.setAttribute("shoeDTO", shoeDTO);
             }
             else {
-                System.out.println("Laptop Id is not found");
+                System.out.println("shoe Id is not found");
+                req.setAttribute("errorMessage","shoe Id is not Found");
             }
+            RequestDispatcher  requestDispatcher = req.getRequestDispatcher("ShoeFindId.jsp");
+            requestDispatcher.forward(req,resp);
         }
     }
 }
