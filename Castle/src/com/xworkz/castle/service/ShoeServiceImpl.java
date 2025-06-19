@@ -4,6 +4,7 @@ import com.xworkz.castle.dto.ShoeDTO;
 import com.xworkz.castle.repository.ShoeRepository;
 import com.xworkz.castle.repository.ShoeRepositoryImpl;
 
+import java.util.Arrays;
 import java.util.Optional;
 
 public class ShoeServiceImpl implements ShoeService{
@@ -45,18 +46,25 @@ public class ShoeServiceImpl implements ShoeService{
         shoeRepository.persist(shoeDTO);
         return true;
     }
-
+    ShoeRepository shoeRepository=new ShoeRepositoryImpl();
     @Override
     public Optional<ShoeDTO> findById(int shoeID) {
+
         System.out.println("findById method in shoe service implementation");
         if(shoeID>0)
         {
             System.out.println("shoe is valid");
 
-            ShoeRepository shoeRepository=new ShoeRepositoryImpl();
+
             shoeRepository.findById(shoeID);
         }
 
         return ShoeService.super.findById(shoeID);
+    }
+
+    @Override
+    public ShoeDTO[] findAll() {
+        System.out.println(Arrays.toString(shoeRepository.findAll()));
+        return shoeRepository.findAll();
     }
 }

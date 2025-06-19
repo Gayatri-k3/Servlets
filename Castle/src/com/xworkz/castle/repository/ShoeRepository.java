@@ -11,4 +11,6 @@ public interface ShoeRepository {
     {
         return Optional.empty();
     }
+
+    ShoeDTO[] findAll();
 }

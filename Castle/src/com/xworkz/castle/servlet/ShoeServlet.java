@@ -52,7 +52,7 @@ public class ShoeServlet extends HttpServlet {
                 throw new RuntimeException(e);
             }
         }
-        ShoeDTO shoeDTO = new ShoeDTO(brand,sizeD,payment,material,manuDate,type);
+        ShoeDTO shoeDTO = new ShoeDTO();
         shoeDTO.setBrand(brand);
         shoeDTO.setType(type);
         shoeDTO.setSize(sizeD);
@@ -60,6 +60,7 @@ public class ShoeServlet extends HttpServlet {
         shoeDTO.setMaterial(material);
         shoeDTO.setManDate(manuDate);
 
+        System.out.println("shoe details: "+shoeDTO);
         ShoeService shoeService = new ShoeServiceImpl();
         boolean saved =shoeService.save(shoeDTO);
         if(saved){
@@ -97,6 +98,9 @@ public class ShoeServlet extends HttpServlet {
             }
             RequestDispatcher  requestDispatcher = req.getRequestDispatcher("ShoeFindId.jsp");
             requestDispatcher.forward(req,resp);
+
+            ShoeDTO[] shoeDTOS = shoeService.findAll();
+
         }
     }
 }

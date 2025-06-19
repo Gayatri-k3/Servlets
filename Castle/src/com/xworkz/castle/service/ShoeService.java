@@ -11,4 +11,5 @@ public interface ShoeService {
     {
         return Optional.empty();
     }
+    ShoeDTO[] findAll();
 }

@@ -101,6 +101,7 @@
 
             <div class="d-grid">
                 <button type="submit" class="btn btn-primary">Submit</button>
+                <a class="btn btn-outline-light" href="ShoeFindID.jsp">Find Shoe</a>
             </div>
         </div>
     </form>
