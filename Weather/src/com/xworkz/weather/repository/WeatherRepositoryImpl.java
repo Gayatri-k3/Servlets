@@ -1,6 +1,5 @@
 package com.xworkz.weather.repository;
 
-import com.sun.xml.internal.ws.server.DefaultResourceInjector;
 import com.xworkz.weather.dto.WeatherDTO;
 import com.xworkz.weather.utils.JdbcConnection;
 

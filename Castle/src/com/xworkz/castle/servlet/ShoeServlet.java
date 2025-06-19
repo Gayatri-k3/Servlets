@@ -19,7 +19,7 @@ public class ShoeServlet extends HttpServlet {
     public ShoeServlet(){
         System.out.println("running no-arg const of Shoe servlet");
     }
-
+    ShoeService shoeService=new ShoeServiceImpl();
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String brand = req.getParameter("brand");
@@ -84,7 +84,6 @@ public class ShoeServlet extends HttpServlet {
         {
             int shoeID=Integer.parseInt(shoeIDStr);
 
-            ShoeService shoeService=new ShoeServiceImpl();
             Optional<ShoeDTO> optionalShoeDTO= shoeService.findById(shoeID);
             if(optionalShoeDTO.isPresent()) {
                 System.out.println("shoe Id is found");
@@ -99,9 +98,13 @@ public class ShoeServlet extends HttpServlet {
             RequestDispatcher  requestDispatcher = req.getRequestDispatcher("ShoeFindId.jsp");
             requestDispatcher.forward(req,resp);
 
-            ShoeDTO[] shoeDTOS = shoeService.findAll();
-
         }
+        ShoeDTO[] shoeDtos = shoeService.findAll();
+        req.setAttribute("shoeDtos", shoeDtos);
+        resp.setContentType("text/html");
+
+        RequestDispatcher dispatcher = req.getRequestDispatcher("index.jsp");
+        dispatcher.forward(req, resp);
     }
 }
 
