@@ -5,6 +5,8 @@ import com.xworkz.concert.repository.ConcertRepo;
 import com.xworkz.concert.repository.ConcertRepoImpl;
 
 import javax.xml.bind.SchemaOutputResolver;
+import java.util.Arrays;
+import java.util.Optional;
 
 public class ConcertServiceImpl implements ConcertService{
     public ConcertServiceImpl(){
@@ -44,5 +46,19 @@ public class ConcertServiceImpl implements ConcertService{
         }
         System.out.println("Data is Invalid");
         return false;
+    }
+
+    public Optional<ConcertDTO> findById(int shoeID) {
+
+        System.out.println("findById method in shoe service implementation");
+        if(shoeID>0)
+        {
+            System.out.println("shoe is valid");
+
+
+            concertRepo.findById(shoeID);
+        }
+
+        return ConcertService.super.findById(shoeID);
     }
 }

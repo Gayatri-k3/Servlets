@@ -16,10 +16,12 @@ import java.util.Optional;
 
 @WebServlet(urlPatterns = "/shoe", loadOnStartup = 1)
 public class ShoeServlet extends HttpServlet {
-    public ShoeServlet(){
+    public ShoeServlet() {
         System.out.println("running no-arg const of Shoe servlet");
     }
-    ShoeService shoeService=new ShoeServiceImpl();
+
+    ShoeService shoeService = new ShoeServiceImpl();
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String brand = req.getParameter("brand");
@@ -27,7 +29,7 @@ public class ShoeServlet extends HttpServlet {
         String type = req.getParameter("type");
         String manDate = req.getParameter("manDate");
         LocalDate manuDate = null;
-        if(manDate != null){
+        if (manDate != null) {
             try {
                 manuDate = LocalDate.parse(manDate);
             } catch (RuntimeException e) {
@@ -36,17 +38,17 @@ public class ShoeServlet extends HttpServlet {
         }
         String size = req.getParameter("size");
         Double sizeD = null;
-        if(size!=null){
-            try{
-                sizeD=Double.parseDouble(size);
+        if (size != null) {
+            try {
+                sizeD = Double.parseDouble(size);
             } catch (NumberFormatException e) {
                 throw new RuntimeException(e);
             }
         }
         String payment = req.getParameter("payment");
         Boolean paymentB = null;
-        if(payment!=null){
-            try{
+        if (payment != null) {
+            try {
                 paymentB = Boolean.parseBoolean(payment);
             } catch (Exception e) {
                 throw new RuntimeException(e);
@@ -60,14 +62,13 @@ public class ShoeServlet extends HttpServlet {
         shoeDTO.setMaterial(material);
         shoeDTO.setManDate(manuDate);
 
-        System.out.println("shoe details: "+shoeDTO);
+        System.out.println("shoe details: " + shoeDTO);
         ShoeService shoeService = new ShoeServiceImpl();
-        boolean saved =shoeService.save(shoeDTO);
-        if(saved){
+        boolean saved = shoeService.save(shoeDTO);
+        if (saved) {
             req.setAttribute("Success", "Data is Valid");
             System.out.println("Success");
-        }
-        else {
+        } else {
             req.setAttribute("Failed", "Data is Invalid");
             System.out.println("Failed");
             req.setAttribute("ShoeDTO", shoeDTO);
@@ -79,32 +80,38 @@ public class ShoeServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         System.out.println("doGet method in Shoe servlet");
-        String shoeIDStr=req.getParameter("shoeID");
-        if (shoeIDStr != null && !shoeIDStr.isEmpty())
-        {
-            int shoeID=Integer.parseInt(shoeIDStr);
 
-            Optional<ShoeDTO> optionalShoeDTO= shoeService.findById(shoeID);
-            if(optionalShoeDTO.isPresent()) {
-                System.out.println("shoe Id is found");
+        String shoeIDStr = req.getParameter("shoeID");
+        String findAllParam = req.getParameter("findAll");
+        ShoeService shoeService = new ShoeServiceImpl();
+
+        if (shoeIDStr != null && !shoeIDStr.isEmpty()) {
+            int shoeID = Integer.parseInt(shoeIDStr);
+            Optional<ShoeDTO> optionalShoeDTO = shoeService.findById(shoeID);
+
+            if (optionalShoeDTO.isPresent()) {
+                System.out.println("Shoe ID is found");
                 ShoeDTO shoeDTO = optionalShoeDTO.get();
-                req.setAttribute("message", "shoe Details");
+                req.setAttribute("message", "Shoe Details");
                 req.setAttribute("shoeDTO", shoeDTO);
+            } else {
+                System.out.println("Shoe ID is not found");
+                req.setAttribute("errorMessage", "Shoe ID is not found");
             }
-            else {
-                System.out.println("shoe Id is not found");
-                req.setAttribute("errorMessage","shoe Id is not Found");
-            }
-            RequestDispatcher  requestDispatcher = req.getRequestDispatcher("ShoeFindId.jsp");
-            requestDispatcher.forward(req,resp);
 
+
+            RequestDispatcher dispatcher = req.getRequestDispatcher("ShoeFindID.jsp");
+            dispatcher.forward(req, resp);
+            return;
         }
-        ShoeDTO[] shoeDtos = shoeService.findAll();
-        req.setAttribute("shoeDtos", shoeDtos);
-        resp.setContentType("text/html");
 
-        RequestDispatcher dispatcher = req.getRequestDispatcher("index.jsp");
+        if ("true".equalsIgnoreCase(findAllParam)) {
+            ShoeDTO[] allShoes = shoeService.findAll();
+            req.setAttribute("shoeDTOs", allShoes);
+        }
+
+        // Forward to same page
+        RequestDispatcher dispatcher = req.getRequestDispatcher("Shoe.jsp");
         dispatcher.forward(req, resp);
     }
 }
-

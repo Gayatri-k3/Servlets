@@ -5,15 +5,16 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Concert Event</title>
+    <title>Find Concert by ID</title>
     <style>
         body {
             background: #f2f2f2;
             font-family: Arial, sans-serif;
             display: flex;
-            height: 100vh;
             align-items: center;
             justify-content: center;
+            height: 100vh;
+            margin: 0;
         }
 
         form {
@@ -21,17 +22,20 @@
             padding: 30px;
             border-radius: 10px;
             box-shadow: 0 0 15px rgba(0,0,0,0.1);
-            width: 320px;
+            width: 300px;
         }
 
-        form h2 {
+        h2 {
             text-align: center;
-            margin-bottom: 20px;
             color: #333;
+            margin-bottom: 20px;
         }
 
-        input[type="text"],
-        input[type="email"],
+        label {
+            font-weight: bold;
+            color: #555;
+        }
+
         input[type="number"] {
             width: 100%;
             padding: 10px;
@@ -55,33 +59,17 @@
         button:hover {
             background: #45a049;
         }
-
-        label {
-            font-weight: bold;
-            color: #555;
-        }
     </style>
 </head>
 <body>
 
-<form action="concert" method="post">
-    <h2>Book Concert</h2>
-    <label for="name">Name:</label>
-    <input type="text" name="name" required>
-
-    <label for="email">Email:</label>
-    <input type="email" name="email" required>
-
-    <label for="num">Contact Number:</label>
-    <input type="number" name="num" required>
-
-    <label for="aName">Artist Name:</label>
-    <input type="text" name="aName" required>
-
-    <label for="location">Location:</label>
-    <input type="text" name="location" required>
-
-    <button type="submit">Book</button>
+<form action="findConcert" method="post">
+    <h2>Find Booked Event</h2>
+    <label for="id">ID:</label>
+    <input type="number" name="id" id="id" required>
+    <button type="submit">Search</button>
+    <br><br>
+    <button><a href="index.jsp">Home</a></button>
 </form>
 
 </body>
