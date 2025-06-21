@@ -14,7 +14,7 @@ public class ConcertDTO {
     private String name;
     private String email;
     private Long number;
-    private String aName;
+    private String AName;
     private String location;
     private int id;
     private Timestamp created_at = Timestamp.valueOf(LocalDateTime.now());

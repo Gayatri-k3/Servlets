@@ -47,6 +47,7 @@ public class ConcertServlet extends HttpServlet {
         }
         else{
             System.out.println("failed");
+            req.setAttribute("ConcertDto",concertDTO);
         }
 
 

@@ -43,25 +43,18 @@ public class FindByIdServlet extends HttpServlet {
                     req.setAttribute("errorMessage", "Concert ID not found");
                 }
 
-                RequestDispatcher dispatcher = req.getRequestDispatcher("ConcertFindID.jsp");
+                RequestDispatcher dispatcher = req.getRequestDispatcher("FindById.jsp");
                 dispatcher.forward(req, resp);
                 return;
 
             } catch (NumberFormatException e) {
                 System.out.println("Invalid concert ID format");
                 req.setAttribute("errorMessage", "Concert ID must be a number");
-                RequestDispatcher dispatcher = req.getRequestDispatcher("ConcertFindID.jsp");
+                RequestDispatcher dispatcher = req.getRequestDispatcher("FindById.jsp");
                 dispatcher.forward(req, resp);
                 return;
             }
         }
 
-        if ("true".equalsIgnoreCase(findAllParam)) {
-            ConcertDTO[] allConcerts = concertService.findAll();
-            req.setAttribute("concertDTOs", allConcerts);
-        }
-
-        RequestDispatcher dispatcher = req.getRequestDispatcher("Event.jsp");
-        dispatcher.forward(req, resp);
     }
 }

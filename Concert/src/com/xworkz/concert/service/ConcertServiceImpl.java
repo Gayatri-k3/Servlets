@@ -8,35 +8,37 @@ import javax.xml.bind.SchemaOutputResolver;
 import java.util.Arrays;
 import java.util.Optional;
 
-public class ConcertServiceImpl implements ConcertService{
-    public ConcertServiceImpl(){
+public class ConcertServiceImpl implements ConcertService {
+    public ConcertServiceImpl() {
         System.out.println("Service const");
     }
+
     ConcertRepo concertRepo = new ConcertRepoImpl();
+
     @Override
     public boolean save(ConcertDTO concertDTO) {
-        if(concertDTO!=null){
-            if(concertDTO.getName()==null || concertDTO.getAName()==null || concertDTO.getEmail() == null || concertDTO.getLocation() == null){
+        if (concertDTO != null) {
+            if (concertDTO.getName() == null || concertDTO.getAName() == null || concertDTO.getEmail() == null || concertDTO.getLocation() == null) {
                 System.out.println("One of the field is empty");
                 return false;
             }
-            if(String.valueOf(concertDTO.getNumber()).length() != 10){
+            if (String.valueOf(concertDTO.getNumber()).length() != 10) {
                 System.out.println("Contact number is invalid");
                 return false;
             }
-            if(concertDTO.getName().isEmpty()||!concertDTO.getName().matches("[a-zA-Z ]+")|| concertDTO.getName().length()<2 || concertDTO.getName().length()>20){
+            if (concertDTO.getName().isEmpty() || !concertDTO.getName().matches("[a-zA-Z ]+") || concertDTO.getName().length() < 2 || concertDTO.getName().length() > 20) {
                 System.out.println("Invalid name");
                 return false;
             }
-            if(concertDTO.getAName().isEmpty()||!concertDTO.getAName().matches("[a-zA-Z ]+")|| concertDTO.getAName().length()<2 || concertDTO.getAName().length()>20){
+            if (concertDTO.getAName().isEmpty() || !concertDTO.getAName().matches("[a-zA-Z ]+") || concertDTO.getAName().length() < 2 || concertDTO.getAName().length() > 20) {
                 System.out.println("Invalid Artist name");
                 return false;
             }
-            if(concertDTO.getEmail().isEmpty()){
+            if (concertDTO.getEmail().isEmpty()) {
                 System.out.println("Invalid email");
                 return false;
             }
-            if(concertDTO.getLocation().isEmpty()||!concertDTO.getLocation().matches("[a-zA-Z ]+")|| concertDTO.getLocation().length()<2 || concertDTO.getLocation().length()>20){
+            if (concertDTO.getLocation().isEmpty() || !concertDTO.getLocation().matches("[a-zA-Z ]+") || concertDTO.getLocation().length() < 2 || concertDTO.getLocation().length() > 20) {
                 System.out.println("Invalid Location");
                 return false;
             }
@@ -48,17 +50,17 @@ public class ConcertServiceImpl implements ConcertService{
         return false;
     }
 
-    public Optional<ConcertDTO> findById(int shoeID) {
 
-        System.out.println("findById method in shoe service implementation");
-        if(shoeID>0)
-        {
-            System.out.println("shoe is valid");
+    @Override
+    public Optional<ConcertDTO> findById(int concertID) {
+        System.out.println("findById method in concert service implementation");
 
-
-            concertRepo.findById(shoeID);
+        if (concertID > 0) {
+            System.out.println("Concert ID is valid");
+            return concertRepo.findById(concertID);
         }
 
-        return ConcertService.super.findById(shoeID);
+        System.out.println("Concert ID is invalid");
+        return Optional.empty();
     }
 }

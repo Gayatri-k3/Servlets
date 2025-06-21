@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -13,6 +14,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            flex-direction: column;
             height: 100vh;
             margin: 0;
         }
@@ -23,6 +25,7 @@
             border-radius: 10px;
             box-shadow: 0 0 15px rgba(0,0,0,0.1);
             width: 300px;
+            margin-bottom: 20px;
         }
 
         h2 {
@@ -59,18 +62,57 @@
         button:hover {
             background: #45a049;
         }
+
+        .result {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 320px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+
+        .result h3 {
+            color: #333;
+            text-align: center;
+        }
+
+        .result p {
+            margin: 8px 0;
+            color: #444;
+            font-size: 15px;
+        }
+
+        .error {
+            color: red;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
 
-<form action="findConcert" method="post">
+<!-- Search Form -->
+<form action="findConcert" method="get">
     <h2>Find Booked Event</h2>
     <label for="id">ID:</label>
     <input type="number" name="id" id="id" required>
     <button type="submit">Search</button>
     <br><br>
-    <button><a href="index.jsp">Home</a></button>
+
 </form>
+
+<!-- Result using EL only -->
+<div class="result" style="${concertDTO != null ? '' : 'display:none'}">
+    <h3>Concert Details</h3>
+    <p><strong>Name:</strong> ${concertDTO.name}</p>
+    <p><strong>Email:</strong> ${concertDTO.email}</p>
+    <p><strong>Contact Number:</strong> ${concertDTO.number}</p>
+    <p><strong>Artist Name:</strong> ${concertDTO.AName}</p>
+    <p><strong>Location:</strong> ${concertDTO.location}</p>
+    <p><strong>Created At:</strong> ${concertDTO.created_at}</p>
+</div>
+
+<!-- Error Message -->
+<p class="error" style="${errorMessage != null ? '' : 'display:none'}">${errorMessage}</p>
 
 </body>
 </html>
