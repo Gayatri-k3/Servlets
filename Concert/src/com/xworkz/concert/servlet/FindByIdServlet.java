@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Optional;
 
-@WebServlet(urlPatterns = "/findConcert", loadOnStartup = 2)
+@WebServlet(urlPatterns = "/findConcert", loadOnStartup = 1 )
 public class FindByIdServlet extends HttpServlet {
 
     public FindByIdServlet() {

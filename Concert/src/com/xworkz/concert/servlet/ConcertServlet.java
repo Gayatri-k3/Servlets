@@ -4,6 +4,7 @@ import com.xworkz.concert.dto.ConcertDTO;
 import com.xworkz.concert.service.ConcertService;
 import com.xworkz.concert.service.ConcertServiceImpl;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -44,12 +45,16 @@ public class ConcertServlet extends HttpServlet {
         System.out.println("ConcertDto" +concertDTO);
         if(concertService.save(concertDTO)){
             System.out.println("Success");
+            req.setAttribute("Success",concertDTO);
+            RequestDispatcher requestDispatcher= req.getRequestDispatcher("Success.jsp");
+            requestDispatcher.forward(req,resp);
         }
-        else{
+        else {
             System.out.println("failed");
-            req.setAttribute("ConcertDto",concertDTO);
+            req.setAttribute("Failed", "Invalid Data");
+            req.setAttribute("ConcertDto", concertDTO);
+            RequestDispatcher requestDispatcher1 = req.getRequestDispatcher("Event.jsp");
+            requestDispatcher1.forward(req, resp);
         }
-
-
     }
 }

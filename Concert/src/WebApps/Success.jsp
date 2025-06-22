@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -7,6 +6,7 @@
           content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Concert Event</title>
+
 </head>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
@@ -28,29 +28,10 @@
         </div>
     </div>
 </nav>
-<!-- Search Form -->
-<form action="findConcert" method="get">
-    <h2>Find Booked Event</h2>
-    <label for="id">ID:</label>
-    <input type="number" name="id" id="id" required>
-    <button type="submit">Search</button>
-    <br><br>
+<h1>Successfully booked your concert!!</h1>
+${Success}
+<h2></h2>
 
-</form>
-
-<!-- Result using EL only -->
-<div class="result" style="${concertDTO != null ? '' : 'display:none'}">
-    <h3>Concert Details</h3>
-    <p><strong>Name:</strong> ${concertDTO.name}</p>
-    <p><strong>Email:</strong> ${concertDTO.email}</p>
-    <p><strong>Contact Number:</strong> ${concertDTO.number}</p>
-    <p><strong>Artist Name:</strong> ${concertDTO.AName}</p>
-    <p><strong>Location:</strong> ${concertDTO.location}</p>
-    <p><strong>Created At:</strong> ${concertDTO.created_at}</p>
-</div>
-
-<!-- Error Message -->
-<p class="error" style="${errorMessage != null ? '' : 'display:none'}">${errorMessage}</p>
 
 </body>
 </html>
