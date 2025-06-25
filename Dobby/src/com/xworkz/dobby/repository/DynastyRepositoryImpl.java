@@ -5,6 +5,7 @@ import com.xworkz.dobby.dto.DynastyDto;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Iterator;
 
 public class DynastyRepositoryImpl implements DynastyRepository{
     @Override
@@ -23,5 +24,22 @@ public class DynastyRepositoryImpl implements DynastyRepository{
         dynasties.add(dynasty5);
 
         return dynasties;
+    }
+    public void maurya(Collection<DynastyDto> dynastyDtos){
+        System.out.println("Iterator");
+        Iterator<DynastyDto> iterator = dynastyDtos.iterator();
+        while (iterator.hasNext()){
+            DynastyDto dynastyDto = iterator.next();
+            if(dynastyDto.getName().equals("Maurya")){
+                System.out.println("Famous Ruler of Maurya: "+dynastyDto.getName());
+            }
+        }
+    }
+    public void year(Collection<DynastyDto> dynastyDtos){
+        System.out.println("For each loop");
+        System.out.println("Ruled over years");
+        for(DynastyDto dynastyDto : dynastyDtos){
+            System.out.println("Dynasty: "+dynastyDto.getName()+", Start Year: "+dynastyDto.getStartYear());
+        }
     }
 }
