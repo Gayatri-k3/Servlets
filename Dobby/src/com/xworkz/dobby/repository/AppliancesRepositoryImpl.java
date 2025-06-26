@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 
-public class AppliancesRepositoryImpl implements AppliancesRepository{
+public class AppliancesRepositoryImpl implements AppliancesRepository {
 
     @Override
     public Collection<AppliancesDto> findAll() {
@@ -35,22 +35,34 @@ public class AppliancesRepositoryImpl implements AppliancesRepository{
 
         return collection;
     }
+
     public void moreThan10k(Collection<AppliancesDto> collection) {
-        System.out.println("Appliances that cost more than 10K");
+        System.out.println("Appliances that cost more than 20K");
         Iterator<AppliancesDto> iterator = collection.iterator();
+        System.out.println("Total size: " + collection.size());
         while (iterator.hasNext()) {
             AppliancesDto appliancesDto = iterator.next();
-            if (appliancesDto.getPrice() > 10000) {
-                System.out.println("Type: " + appliancesDto.getType());
+            if (appliancesDto.getPrice() > 20000) {
+                iterator.remove();
             }
         }
+        System.out.println("Total size after removing: " + collection.size());
     }
-    public void smartAppliances(Collection<AppliancesDto> collection){
+
+    public void smartAppliances(Collection<AppliancesDto> collection) {
+        System.out.println("For Each loop");
         System.out.println("Smart Devices in the collection");
-        for(AppliancesDto smart: collection){
-            if(smart.getRAM()>0){
+        for (AppliancesDto smart : collection) {
+            if (smart.getRAM() > 0) {
                 System.out.println(smart.getType());
             }
         }
     }
+
+    public void check(Collection<AppliancesDto> collection, String type, double storage, double price, double RAM,String material) {
+        System.out.println("Is Collection empty? "+collection.isEmpty());
+        AppliancesDto test = new AppliancesDto(type, storage,price,RAM,material);
+        System.out.println("Contains? " + collection.contains(test));
+    }
 }
+
