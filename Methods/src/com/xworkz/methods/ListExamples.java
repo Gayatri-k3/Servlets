@@ -1,11 +1,10 @@
 package com.xworkz.methods;
 
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-public class LinkedListExamples {
+public class ListExamples {
     public static void main(String[] args) {
         LinkedList<String> list1=new LinkedList<>();
         list1.add("Hubballi");

@@ -2,7 +2,7 @@ package com.xworkz.methods;
 
 import java.util.*;
 
-public class HashSetExamples {
+public class SetExamples {
     public static void main(String[] args) {
         Set<String> fruit= new HashSet<>();
         fruit.add("Apple");
@@ -63,5 +63,41 @@ public class HashSetExamples {
             Integer integer = iterator.next();
             System.out.println(integer);
         }
+
+        System.out.println("-------------------------------");
+        TreeSet<String> country = new TreeSet<>();
+        country.add("India");
+        country.add("China");
+        country.add("New Zealand");
+        country.add("Korea");
+        System.out.println("TreeSet: "+country);
+
+
+        System.out.println("-------------------------------");
+        TreeSet<Integer> sortNum = new TreeSet<>();
+        sortNum.add(98);
+        sortNum.add(86);
+        sortNum.add(99);
+        sortNum.add(12);
+        System.out.println(sortNum);
+
+        System.out.println("-------------------------------");
+        System.out.println("Highest: "+Collections.max(sortNum));
+        System.out.println("Lowest: "+Collections.min(sortNum));
+
+
+        System.out.println("-------------------------------");
+        TreeSet<Integer> lessThan50 = new TreeSet<>();
+        for(int i=40; i<=60;i++){
+            lessThan50.add(i);
+        }
+        Iterator<Integer> iterator2 = lessThan50.iterator();
+        while(iterator2.hasNext()){
+            Integer collections2 = iterator2.next();
+            if(collections2 < 50){
+                iterator2.remove();
+            }
+        }
+        System.out.println(lessThan50);
     }
 }
