@@ -2,7 +2,7 @@ package com.xworkz.dobby.runner;
 
 import com.xworkz.dobby.dto.AppliancesDto;
 import com.xworkz.dobby.repository.AppliancesRepositoryImpl;
-import sun.applet.AppletListener;
+
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -20,7 +20,7 @@ public class AppliancesRunner {
         System.out.println("Size before addAll: "+collection.size());
         System.out.println("============================================");
         AppliancesDto add1 = new AppliancesDto("Speaker",2,30000,0,"metal");
-        AppliancesDto add2 = new AppliancesDto("Airfryer",4,30000,0,"Aluminium");
+        AppliancesDto add2 = new AppliancesDto("Air fryer",4,30000,0,"Aluminium");
         Collection<AppliancesDto> collection1 = new ArrayList<>();
         collection1.add(add1);
         collection1.add(add2);
@@ -37,6 +37,11 @@ public class AppliancesRunner {
         System.out.println("Collection after removeAll: "+collection.size());
         System.out.println("============================================");
         System.out.println("Contains all Test appliances? "+collection.containsAll(collection1));
+
+
+        collection.stream()
+                .sorted()
+                .forEach(System.out::println);
 
     }
 }
