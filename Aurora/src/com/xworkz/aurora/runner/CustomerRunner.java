@@ -2,8 +2,7 @@ package com.xworkz.aurora.runner;
 
 import com.xworkz.aurora.dto.*;
 import com.xworkz.aurora.repository.*;
-import com.xworkz.aurora.repository.*;
-import com.xworkz.aurora.repository.*;
+
 
 import java.util.Comparator;
 import java.util.Optional;
@@ -24,7 +23,7 @@ public class CustomerRunner {
         PresidentRepository presidentRepo = new PresidentRepositoryImpl(driverRepo);
         CountryRepository countryRepo = new CountryRepositoryImpl(presidentRepo);
         PassportRepository passportRepo = new PassportRepositoryImpl(countryRepo);
-        CustomerRepository customerRepo = new CustomerRepositoryImpl(passportRepo);
+
 
         CustomerRepository customerRepository = new CustomerRepositoryImpl(passportRepo);
         Set<CustomerDTO> customers = customerRepository.findAll();
