@@ -24,7 +24,7 @@ public class SweetRunner {
         List<SweetDTO> list = new ArrayList<>(set);
         list.stream().sorted((a,b)-> {
             int nameComp = b.getName().compareTo(a.getName());
-            return (nameComp != 0) ? nameComp : Double.compare(b.getPrice(), a.getPrice());
+            return (nameComp != 0) ? Double.compare(b.getPrice(), a.getPrice()) : nameComp;
         }).forEach(System.out::println);
 
         System.out.println("================================================");
