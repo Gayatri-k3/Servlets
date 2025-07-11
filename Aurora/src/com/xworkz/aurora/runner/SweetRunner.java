@@ -27,7 +27,7 @@ public class SweetRunner {
             return (nameComp != 0) ? nameComp : Double.compare(b.getPrice(), a.getPrice());
         }).forEach(System.out::println);
 
-
+        System.out.println("================================================");
         List<SweetDTO> linked = new LinkedList<>(set);
         System.out.println("Set to LinkedList");
         linked.forEach(System.out::println);
