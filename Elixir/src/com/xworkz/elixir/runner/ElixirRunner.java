@@ -19,7 +19,7 @@ public class ElixirRunner {
         }
 
         System.out.println("-----------------------------------");
-        System.out.println("Update Operation");
+        System.out.println("Update");
         System.out.println("Before Update: Action Figure ="+toys.get("Action Figure"));
         toys.put("Action Figure",900);
         System.out.println("After Update: Action Figure ="+toys.get("Action Figure"));
